@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Feather, AntDesign } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { TaskItem as TaskType } from '../utils/handle-api';
 
 import { useTaskStore } from '../store/useTaskStore';
@@ -15,9 +16,10 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
   const deleteTask = useTaskStore((state) => state.deleteTask);
   const setEditingTask = useTaskStore((state) => state.setEditingTask);
   const isOverdue = task.dueDate && new Date(task.dueDate) < new Date(new Date().setHours(0, 0, 0, 0));
+  const router = useRouter();
 
   return (
-    <View style={styles.task}>
+    <TouchableOpacity style={styles.task} onPress={() => router.push(`/task/${task._id}`)}>
       <View style={styles.contentContainer}>
         <Text style={[styles.text, !!task.completed && styles.textCompleted]}>
           {task.text}
@@ -36,7 +38,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
           <AntDesign name="delete" size={20} color="#fff" style={styles.icon} />
         </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

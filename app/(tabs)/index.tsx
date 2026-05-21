@@ -3,12 +3,12 @@ import { StyleSheet, Text, View, TextInput, TouchableOpacity, SafeAreaView, Plat
 import { StatusBar } from 'expo-status-bar';
 import Checkbox from 'expo-checkbox';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import TaskList from './src/components/TaskList';
-import { TaskItem } from './src/utils/handle-api';
-import { globalStyles } from './src/styles/global';
-import AboutScreen from './src/components/AboutScreen';
+import TaskList from '../../src/components/TaskList';
+import { TaskItem } from '../../src/utils/handle-api';
+import { globalStyles } from '../../src/styles/global';
+import AboutScreen from '../../src/components/AboutScreen';
 
-import { useTaskStore } from './src/store/useTaskStore';
+import { useTaskStore } from '../../src/store/useTaskStore';
 export default function App() {
   const tasks = useTaskStore((state) => state.tasks);
   const addTask = useTaskStore((state) => state.addTask);
@@ -78,7 +78,7 @@ export default function App() {
             <Text style={styles.header}>Gerenciador de Tarefas</Text>
           ) : (
             <Image 
-              source={require('./assets/task-app-banner.png')} 
+              source={require('../../assets/task-app-banner.png')} 
               style={styles.logo} 
               onError={() => setLogoError(true)}
             />

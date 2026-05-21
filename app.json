@@ -3,6 +3,7 @@
     "name": "tasks-app-expo",
     "slug": "tasks-app-renan",
     "version": "1.0.0",
+    "scheme": "tasks-app",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -29,6 +30,7 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      "expo-router",
       "@react-native-community/datetimepicker"
     ]
   }
